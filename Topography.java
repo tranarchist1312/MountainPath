@@ -144,10 +144,31 @@ public class Topography {
 	 * 
 	 */
 	public int[] getNeighbouringElevations(int row, int col) {
+		/*
+		deklarerar variabler för följande celler
+		 */
 		int[] arr = new int[3];
-		int aElevation = map[row - 1][col + 1].getElevation();
-		int bElevation = map[row][col + 1].getElevation();
-		int cElevation = map[row + 1][col + 1].getElevation();
+		int bElevation;
+		int cElevation;
+		int aElevation;
+
+		if(col + 1 > cols - 1){
+			cElevation = OUTSIDE_BORDERS;
+			bElevation = OUTSIDE_BORDERS;
+			aElevation = OUTSIDE_BORDERS;
+		}else if(row -1 < 0){
+			aElevation = OUTSIDE_BORDERS;
+			bElevation = map[row][col + 1].getElevation();
+			cElevation = map[row + 1][col + 1].getElevation();
+		}else if(row + 1 > rows -1){
+			aElevation = map[row - 1][col + 1].getElevation();
+			bElevation = map[row][col + 1].getElevation();
+			cElevation = OUTSIDE_BORDERS;
+		}else {
+			aElevation = map[row - 1][col + 1].getElevation();
+			bElevation = map[row][col + 1].getElevation();
+			cElevation = map[row + 1][col + 1].getElevation();
+		}
 
 		arr[0] = aElevation;
 		arr[1] = bElevation;
