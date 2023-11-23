@@ -145,11 +145,15 @@ public class Topography {
 	 */
 	public int[] getNeighbouringElevations(int row, int col) {
 		int[] arr = new int[3];
+		int aElevation = map[row - 1][col + 1].getElevation();
+		int bElevation = map[row][col + 1].getElevation();
+		int cElevation = map[row + 1][col + 1].getElevation();
 
-		for(int i=0; i<3; i++){
+		arr[0] = aElevation;
+		arr[1] = bElevation;
+		arr[2] = cElevation;
 
-		}
-		return null;
+		return arr;
 	}
 	
 	/**
@@ -161,13 +165,17 @@ public class Topography {
 	 * @return The cell in column 0 which has the lowest elevation
 	 */
 	public Cell findLowestStartingPoint() {
-		Cell min = getCell(0, 0);
-		Cell[] startCols = new Cell[rows];
-		Cell value;
-		int minIndex;
-		for(int i=0; i<rows; i++){
+		int min = Integer.MAX_VALUE;
+		int minIndex = 0;
+		int[] elevations = new int[rows];
 
+		for(int i=0; i<rows; i++){
+			elevations[i] = map[i][0].getElevation();
+			if(elevations[i] <= min){
+				min = elevations[i];
+				minIndex = i;
+			}
 		}
-		return null;
+		return map[minIndex][0];
 	}
 }

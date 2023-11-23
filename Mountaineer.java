@@ -29,11 +29,16 @@ public class Mountaineer {
 	 * method should also update the elevationChange according to the task
 	 * description
 	 * 
-	 * @param c the cell the mountaineer is moving to
+	 * @param cell the cell the mountaineer is moving to
 	 */
 	public void moveToCell(Cell cell) {
 		Cell oldLocation = location;
+
+		int oldElevation = oldLocation.getElevation();
+		int newElevation = cell.getElevation();
+
 		location = cell;
+		elevationChange = oldElevation - newElevation;
 	}
 	
 	/**
