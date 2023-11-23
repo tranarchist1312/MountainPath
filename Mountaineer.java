@@ -14,7 +14,7 @@ public class Mountaineer {
 	
 	/**
 	 * Sets the starting location of the mountaineer.
-	 * @param c the starting location of the mountaineer
+	 * @param cell the starting location of the mountaineer
 	 */
 	public void setStartingPoisition(Cell cell) {
 		location = cell;
